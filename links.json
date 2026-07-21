@@ -1,12 +1,14 @@
 {
+    "chats": {
+        "chat": null,
+        "news": null,
+        "reserve": null
+    },
     "links": {
-        "chat": "",
-        "news": "",
-        "reserve": "",
         "bot": "",
-        "website": "",
         "ceo": "",
-        "operator": ""
+        "operator": "",
+        "website": ""
     },
     "operators": []
 }
