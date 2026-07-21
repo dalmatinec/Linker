@@ -114,6 +114,7 @@ async def cancel_edit_links(callback: CallbackQuery, state: FSMContext):
     """Отмена изменения ссылок"""
     await callback.answer()
     await state.clear()
+    await state.set_state(None)
     await callback.message.answer(
         "❌ Действие отменено\n\n"
         "Выйти в главное меню - /start\n"
@@ -128,6 +129,7 @@ async def process_link_value(message: types.Message, state: FSMContext):
 
     if message.text == "❌ Отмена":
         await state.clear()
+        await state.set_state(None)
         await message.answer(
             "❌ Действие отменено\n\n"
             "Выйти в главное меню - /start\n"
@@ -141,6 +143,7 @@ async def process_link_value(message: types.Message, state: FSMContext):
 
     if not link_key:
         await state.clear()
+        await state.set_state(None)
         await message.answer(
             "❌ Действие отменено\n\n"
             "Выйти в главное меню - /start\n"
@@ -179,8 +182,14 @@ async def process_operator_input(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
 
+    if message.text.startswith("/"):
+        await state.clear()
+        await state.set_state(None)
+        return
+
     if message.text == "❌ Отмена":
         await state.clear()
+        await state.set_state(None)
         await message.answer(
             "❌ Действие отменено\n\n"
             "Выйти в главное меню - /start\n"
@@ -201,7 +210,6 @@ async def process_operator_input(message: types.Message, state: FSMContext):
             await message.answer("❌ Список операторов пуст")
             return
 
-        # Инлайн-кнопки для выбора оператора на удаление
         buttons = []
         for op in operators:
             buttons.append([InlineKeyboardButton(text=str(op), callback_data=f"delete_operator_{op}")])
@@ -262,6 +270,7 @@ async def cancel_delete_operator(callback: CallbackQuery, state: FSMContext):
     """Отмена удаления оператора"""
     await callback.answer()
     await state.clear()
+    await state.set_state(None)
     await callback.message.answer(
         "❌ Действие отменено\n\n"
         "Выйти в главное меню - /start\n"
