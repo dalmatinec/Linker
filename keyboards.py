@@ -9,12 +9,15 @@ def main_menu():
             InlineKeyboardButton(text="⚜𝐍𝐄𝐖𝐒", callback_data="link_news")
         ],
         [
-            InlineKeyboardButton(text="⚜𝘽𝙊𝙏", url=get_link("bot")),
-            InlineKeyboardButton(text="⚜𝙒𝙚𝙗𝙨𝙖𝙮𝙩", url=get_link("website"))
+            InlineKeyboardButton(text="⚜ʀᴇsᴇʀᴠ", callback_data="link_reserve"),
+            InlineKeyboardButton(text="⚜𝘽𝙊𝙏", url=get_link("bot"))
         ],
         [
-            InlineKeyboardButton(text="⚜𝙈𝙊𝙍𝙀𝙉𝘼", url=get_link("ceo")),
+            InlineKeyboardButton(text="⚜𝘾𝙀𝙊 𝙈𝙊𝙍𝙀𝙉𝘼", url=get_link("ceo")),
             InlineKeyboardButton(text="⚜𝙊𝙋𝙀𝙍𝘼𝙏𝙊𝙍", url=get_link("operator"))
+        ],
+        [
+            InlineKeyboardButton(text="⚜𝙒𝙚𝙗𝙨𝙖𝙮𝙩", url=get_link("website"))
         ],
         [
             InlineKeyboardButton(text="✉️ Связаться с оператором", callback_data="support")
